@@ -15,8 +15,8 @@ public class Student implements Comparable<Student>
    /**
     * Constructs a student with a id and a name
     *
-    * Preconditions: none
-    * PostConditions: initialized student object
+    * @Pre-conditions: none
+    * @Post-conditions: initialized student object
     *
     */
    public Student (long num, String lName)
@@ -27,8 +27,8 @@ public class Student implements Comparable<Student>
    /**
     * Implementation of Comparable interface
     *
-    * Preconditions: other != null
-    * PostConditions: a 1 0 or -1 value representing the collation
+    * @Pre-conditions: other != null
+    * @Post-onditions: a 1 0 or -1 value representing the collation
     *
     */
    public int compareTo(Student other)
@@ -43,8 +43,8 @@ public class Student implements Comparable<Student>
    /**
     * Returns a formatted student string
     *
-    * Preconditions: none
-    * PostConditions: Returns a string with id and name of student
+    * @Pre-conditions: none
+    * @Post-conditions: Returns a string with id and name of student
     *
     */
    public String toString()

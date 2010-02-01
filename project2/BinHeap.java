@@ -30,8 +30,8 @@ public class BinHeap <T extends Comparable <? super T>>
 	private int count; 
 	/**
 	 * Initialises an empty heap
-	 * Pre-conditions: none
-	 * Post-conditions: empty heap, arr has size 100
+	 * @Pre-conditions: none
+	 * @Post-conditions: empty heap, arr has size 100
 	 */
 	public BinHeap () {
 	   count = 0;
@@ -39,8 +39,8 @@ public class BinHeap <T extends Comparable <? super T>>
 	}
 	/**
 	 * Initialises an empty heap
-	 * Pre-conditions: none
-	 * Post-conditions: empty heap, arr has size "size"
+	 * @Pre-conditions: none
+	 * @Post-conditions: empty heap, arr has size "size"
 	 * @param size size of array to house the heap
 	 */
 	public BinHeap (int size) {
@@ -50,8 +50,8 @@ public class BinHeap <T extends Comparable <? super T>>
 	/**
 	 * Implements the insert operation of the heap structure: adds the value given as a parameter 
 	 * an appropriate position in the array
-	 * Pre-conditions: item != null
-	 * Post-conditions:count is incremented and the heap is repositioned
+	 * @Pre-conditions: item != null
+	 * @Post-conditions:count is incremented and the heap is repositioned
 	 * @param item A object of type T to be added to the heap<T>
 	 */
 	public void insert(T item) {
@@ -75,9 +75,9 @@ public class BinHeap <T extends Comparable <? super T>>
 	/**
 	 * Implements the delete minimum value operation of the heap structure: removes the root node and 
 	 * adjusts the structure of the heap accordingly
-	 * Pre-conditions: item != null
-	 * Post-conditions:top points to a node containing item
-	 * @param item A object of type T to be added to the stack<T>
+	 * @Pre-conditions: item != null
+	 * @Post-conditions: heap is repositioned to account for minimum node deletion
+	 *  minimum node is deleted
 	 */
 	public T deleteMin() {
 	   if( count==0)
@@ -97,7 +97,12 @@ public class BinHeap <T extends Comparable <? super T>>
       arr[hole]=item;
 	   return temp;
 	}
-	// Private method that facilitates traversing the heap
+	/**
+	 * Private method that facilitates traversing the heap
+	 *
+	 * @Preconditions: item != null, hole < arr.length
+	 * @Postconditions: returns postions of the next hole
+	 */
 	private int newHole (int hole, T item)
    {
       int newHole = -1;
@@ -123,26 +128,26 @@ public class BinHeap <T extends Comparable <? super T>>
    }
 	/**
 	 * Implements the empty check operation of the Heap structure: Checks if count = 0
-	 * Pre-conditions: none
-	 * Post-conditions: none
-	 * @return Boolean if the stack is empty
+	 * @Pre-conditions: none
+	 * @Post-conditions: Returns a boolean denoting the emptyness of the heap
+	 * 
 	 */
 	public boolean isEmpty () {
 	   return count == 0;
 	}
 	/**
 	 * Implements the size check operation of the Heap structure: returns size
-	 * Pre-conditions: none
-	 * Post-conditions: none
-	 * @return int pertaining to the amount of elements in the heap
+	 * @Pre-conditions: none
+	 * @Post-conditions: returns the size of the heap
+	 * 
 	 */
 	public int size () {
 	   return count;
 	}
 	/**
 	 * Implements the print operation of the Heap structure
-	 * Pre-conditions: none
-	 * Post-conditions: printed list of heap by row in the console
+	 * @Pre-conditions: none
+	 * @Post-conditions: printed list of heap by row in the console
 	 */
 	public void print () {
 	   for(int i =0; i<count; i++) {
