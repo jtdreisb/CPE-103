@@ -18,12 +18,10 @@ public class ArraySummer
       int i = 0 ;
       System.out.println("enter 10 integers");
       
-      while ( i < 10 )
+      while ( i < 10 && scan.hasNextInt())
       {
-         while( scan.hasNextInt())
-         {
             arr[i++] = scan.nextInt();
-         }
+         
       }
       System.out.println("Thanks! The sum is: "+ arraySum(arr, 0));
    }
