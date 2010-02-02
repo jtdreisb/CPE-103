@@ -5,11 +5,11 @@ public class GCDCalculator
    {
       if(x > y)
       {
-         x = gcd(x-y,y);
+         return gcd(x-y,y);
       }
-      else
+      else if( x < y )
       {
-         y = gcd(x,y-x);
+         return gcd(x,y-x);
       }
       return x;
    }
@@ -18,6 +18,7 @@ public class GCDCalculator
       Scanner scan = new Scanner(System.in);
       int x =0, y=0;
       int i = 0 ;
+      
       char decision = 'y';
       
       while ( decision == 'y')
@@ -43,7 +44,10 @@ public class GCDCalculator
          
          
          System.out.println("Would you like to continue(y or n)?");
-         decision = (char) scan.nextByte();
+         while(!scan.hasNext());
+         decision = scan.next().charAt(0);
+         scan.nextLine();
+         
       }
       
    }
