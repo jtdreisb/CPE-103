@@ -2,7 +2,12 @@ public class BST<T extends Comparable<? super T>>
 {
    private class BSTNode
    {
+      // data hold the value for the specific node
       T data;
+      /*
+       * left holds a reference to the node's left child
+       * right holds a reference to the node's right child
+       */
       BSTNode left, right;
    }
    
