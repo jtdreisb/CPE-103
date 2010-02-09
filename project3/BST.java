@@ -16,7 +16,10 @@ public class BST<T extends Comparable<? super T>>
     * root holds a reference to the root node of the bst
     */
    private BSTNode root;
-   
+   /*
+    * Preorder iterator class will traverse the BST
+    *
+    */
    private class PreIter
    {
    
@@ -288,8 +291,29 @@ public class BST<T extends Comparable<? super T>>
 	      return findMaximum(n.right);
 	   }
 	}
-	public Iterator<T> iteratorPre(){}
-	public Iterator<T> iteratorIn(){}
-	public Iterator<T> iteratorLevel(){}
-	public void testPrint() {}
+	public Iterator<T> iteratorPre(){return null;}
+	public Iterator<T> iteratorIn(){return null;}
+	public Iterator<T> iteratorLevel(){return null;}
+	public void testPrint() 
+	{
+	   if(isEmpty())
+	      return;
+	   testPrintx(root, 0);
+	}
+	private void testPrintx(BSTNode x, int level)
+	{
+	   for(int i=0; i<level; i++)
+	   {
+	      System.out.print("   ");
+	   }
+	   System.out.println(x.data);
+	   if(x.left != null)
+	   {
+	      testPrintx(x.left,level + 1);
+	   }
+	   if(x.right != null)
+	   {
+	      testPrintx(x.right, level + 1);
+	   }
+	}
 }

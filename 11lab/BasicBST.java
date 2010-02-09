@@ -37,23 +37,21 @@ public class BasicBST
 	}   
 	public int countOdds()
 	{
-	   if (root == null)
-	      return 0;
-      else 
          return countOddsx(root);
 	}
 	private int countOddsx(BSTNode n)
 	{
-	   int odds=0;
-	   if ( n==null)
-	      return 0;
-      if (n.data%2 ==1)
-	   {
-	      odds+=1;
-	   }   
-	   odds += countOddsx(n.right);
-	   odds += countOddsx(n.right);
-	   return odds;
+	   int odds = 0;
+	   if ( n != null)
+      {
+         if (n.data%2 == 1)
+	      {
+	         odds += 1;
+	      }   
+	      odds += countOddsx(n.right);
+	      odds += countOddsx(n.left);
+	  }
+	  return odds;
 	}
 	public int height ()
 	{
@@ -63,7 +61,7 @@ public class BasicBST
 	}
 	private int heightx (BSTNode n)
 	{
-	   int hRight = 0, hLeft = 0;
+	   int hRight = -1, hLeft = -1;
 	   if ( n.right !=null)
 	   {
 	      hRight = heightx(n.right); 
@@ -100,24 +98,24 @@ public class BasicBST
 	}
 	public int countOneChildParents ()
 	{
-		   if (root == null)
+		if (root == null)
 	      return 0;
       return oneChildx(root);
 	}
 	private int oneChildx (BSTNode n)
 	{
-	   int lRight = 0, lLeft = 0;
+	   int ret = 0;
 	   if (n.right == null && n.left != null || n.right != null && n.left == null)
-	      return 1;
+	      ret =  1;
 	   if ( n.right !=null)
 	   {
-	      lRight = oneChildx(n.right); 
+	      ret += oneChildx(n.right); 
 	   }
 	   if ( n.left !=null)
 	   {
-	      lLeft = oneChildx(n.left); 
+	      ret += oneChildx(n.left); 
 	   }
-	   return lLeft+lRight;
+	   return ret;
 	}
 }
 
