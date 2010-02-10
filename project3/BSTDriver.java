@@ -1,10 +1,10 @@
-import java.util.Scanner;
+import java.util.*;
 public class BSTDriver
 {
    public static void main(String[] args)
    {
       BST<Integer> q = new BST<Integer>();
-      
+      Iterator it;
       boolean repeat = true;
       String input;
       char decision;
@@ -25,7 +25,7 @@ public class BSTDriver
       System.out.println("- test print (enter letter t)");
       System.out.println("- quit (enter letter q)");
       Scanner scan = new Scanner(System.in);
-      System.out.println("Enter your choice: (a, d, p, e, or q)");
+      System.out.println("Enter your choice: (a, d, f, e, k, n, m, x, p, i, l, t or q)");
       
       
       while( repeat )
@@ -123,15 +123,27 @@ public class BSTDriver
                break;
             case 'p':
             case 'P':
-               System.out.println("not implemented YET");
+               it = q.iteratorPre();
+               System.out.print("Preorder: ");
+               while(it.hasNext())
+                  System.out.print(it.next()+" ");
+               System.out.println();
                break;
             case 'i':
             case 'I':
-               System.out.println("not implemented YET");
+               it = q.iteratorIn();
+               System.out.print("Inorder: ");
+               while(it.hasNext())
+                  System.out.print(it.next()+" ");
+               System.out.println();
                break;
             case 'l':
             case 'L':
-               System.out.println("not implemented YET");
+               it = q.iteratorLevel();
+               System.out.print("Levelorder: ");
+               while(it.hasNext())
+                  System.out.print(it.next()+" ");
+               System.out.println();
                break;
             case 't':
             case 'T':

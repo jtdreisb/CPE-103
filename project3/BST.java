@@ -20,17 +20,115 @@ public class BST<T extends Comparable<? super T>>
     * Preorder iterator class will traverse the BST
     *
     */
-   private class PreIter
+   private class PreIter implements Iterator<T>
    {
-   
+      private MyStack<BSTNode> stack;
+      public PreIter(BSTNode root) 
+      {
+         stack = new MyStack<BSTNode> ();
+         if(root != null)
+         {
+            stack.push(root);
+         }
+      }
+      
+      public boolean hasNext()
+      {
+         return !stack.isEmpty();
+      }
+      
+      public T next()
+      {
+         if(!hasNext())
+            throw new NoSuchElementException();
+         BSTNode ret = stack.pop();
+         if(ret.right != null)
+            stack.push(ret.right);
+         if(ret.left != null)
+            stack.push(ret.left);
+         return ret.data;
+      }
+      
+      public void remove()
+      {
+         throw new UnsupportedOperationException();
+      }
    }
-   private class InIter
+   private class InIter implements Iterator<T>
    {
-   
+      private MyStack<BSTNode> stack;
+      
+      public InIter(BSTNode root) 
+      {
+         stack = new MyStack<BSTNode> ();
+         if(root != null)
+         {
+            stackUpLefts(root);
+         }
+      }
+      
+      private void stackUpLefts(BSTNode x)
+      {
+         stack.push(x);
+         if(x.left != null)
+            stackUpLefts(x.left);
+         
+      }
+      public boolean hasNext()
+      {
+         return !stack.isEmpty();
+      }
+      
+      public T next()
+      {
+         if(stack.isEmpty())
+            throw new NoSuchElementException();
+         BSTNode x = stack.pop();
+         if(x.right != null)
+            stackUpLefts(x.right);
+         return x.data;
+      }
+      
+      public void remove()
+      {
+         throw new UnsupportedOperationException();
+      }
    }
-   private class LevelIter
+   private class LevelIter implements Iterator<T>
    {
-   
+      private LQueue<BSTNode> q;
+      
+      public LevelIter(BSTNode root) 
+      {
+         q = new LQueue<BSTNode> ();
+         if(root != null)
+         {
+            q.enqueue(root);
+         }
+      }
+      
+      
+      public boolean hasNext()
+      {
+         return !q.empty();
+      }
+      
+      public T next()
+      {
+         if(q.empty())
+            throw new NoSuchElementException();
+         BSTNode x = q.dequeue();
+         if(x.left != null)
+            q.enqueue(x.left);
+         if(x.right != null)
+            q.enqueue(x.right);
+         return x.data;
+      }
+      
+      public void remove()
+      {
+         throw new UnsupportedOperationException();
+      }
    }
    /*
     * Exception subclass that we will throw for this implementation
@@ -291,9 +389,9 @@ public class BST<T extends Comparable<? super T>>
 	      return findMaximum(n.right);
 	   }
 	}
-	public Iterator<T> iteratorPre(){return null;}
-	public Iterator<T> iteratorIn(){return null;}
-	public Iterator<T> iteratorLevel(){return null;}
+	public Iterator<T> iteratorPre(){return new PreIter(root);}
+	public Iterator<T> iteratorIn(){return new InIter(root);}
+	public Iterator<T> iteratorLevel(){return new LevelIter(root);}
 	public void testPrint() 
 	{
 	   if(isEmpty())
