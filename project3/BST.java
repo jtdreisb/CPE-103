@@ -22,7 +22,17 @@ public class BST<T extends Comparable<? super T>>
     */
    private class PreIter implements Iterator<T>
    {
+   /*
+    * stack holds a reference to a stack of the objects in the bst in pre-order
+    */
       private MyStack<BSTNode> stack;
+      /**
+	    * creates a new preorder iterator for the BST
+	    * @param: root the bst that we wish to iterate through
+	    * @Pre-conditions: none
+	    * @Post-conditions: initilize a new stack and pushes in the root if !=
+	    *                   null
+	    */
       public PreIter(BSTNode root) 
       {
          stack = new MyStack<BSTNode> ();
@@ -31,12 +41,25 @@ public class BST<T extends Comparable<? super T>>
             stack.push(root);
          }
       }
-      
+      /**
+	    * determines whether the stack is empty
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns the check for if the stack is empty
+	    *                   
+	    */
       public boolean hasNext()
       {
          return !stack.isEmpty();
       }
-      
+      /**
+	    * returns the next value determined by the iterator
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns a T type element and throws a 
+	    *       NoSuchElementException() if there is no next element
+	    *                   
+	    */
       public T next()
       {
          if(!hasNext())
@@ -48,16 +71,35 @@ public class BST<T extends Comparable<? super T>>
             stack.push(ret.left);
          return ret.data;
       }
-      
+      /**
+	    * remove is unsupported by our implimentation
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: throws UnsupportedOperationException()
+	    *                   
+	    */
       public void remove()
       {
          throw new UnsupportedOperationException();
       }
    }
+   /*
+    * inorder iterator class will traverse the BST
+    *
+    */
    private class InIter implements Iterator<T>
    {
+    /*
+     * stack holds a reference to a stack of the objects in the bst in-order
+     */
       private MyStack<BSTNode> stack;
-      
+      /**
+	    * creates a new inorder iterator for the BST
+	    * @param: root the bst that we wish to iterate through
+	    * @Pre-conditions: none
+	    * @Post-conditions: initilize a new stack and stacks up the left nodes if
+	    *                   root !=null
+	    */
       public InIter(BSTNode root) 
       {
          stack = new MyStack<BSTNode> ();
@@ -66,7 +108,13 @@ public class BST<T extends Comparable<? super T>>
             stackUpLefts(root);
          }
       }
-      
+      /**
+	    * adds the left nodes onto the stack
+	    * @param: x the bst that we wish to add the left nodes on to the stack
+	    * @Pre-conditions: none
+	    * @Post-conditions: pushes the left children of the x node onto the stack
+	    *                   
+	    */
       private void stackUpLefts(BSTNode x)
       {
          stack.push(x);
@@ -74,11 +122,25 @@ public class BST<T extends Comparable<? super T>>
             stackUpLefts(x.left);
          
       }
+      /**
+	    * determines whether the stack is empty
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns the check for if the stack is empty
+	    *                   
+	    */
       public boolean hasNext()
       {
          return !stack.isEmpty();
       }
-      
+      /**
+	    * returns the next value determined by the iterator
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns a T type element and throws a 
+	    *       NoSuchElementException() if there is no next element
+	    *                   
+	    */
       public T next()
       {
          if(stack.isEmpty())
@@ -88,7 +150,13 @@ public class BST<T extends Comparable<? super T>>
             stackUpLefts(x.right);
          return x.data;
       }
-      
+      /**
+	    * remove is unsupported by our implimentation
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: throws UnsupportedOperationException()
+	    *                   
+	    */
       public void remove()
       {
          throw new UnsupportedOperationException();
@@ -96,8 +164,17 @@ public class BST<T extends Comparable<? super T>>
    }
    private class LevelIter implements Iterator<T>
    {
+     /*
+      * queue holds a reference to a queue of the objects in the bst level-order
+      */
       private LQueue<BSTNode> q;
-      
+      /**
+	    * creates a new levelorder iterator for the BST
+	    * @param: root the bst that we wish to iterate through
+	    * @Pre-conditions: none
+	    * @Post-conditions: initilize a new stack and stacks up the left nodes if
+	    *                   root !=null
+	    */
       public LevelIter(BSTNode root) 
       {
          q = new LQueue<BSTNode> ();
@@ -105,14 +182,26 @@ public class BST<T extends Comparable<? super T>>
          {
             q.enqueue(root);
          }
-      }
-      
-      
+      }      
+      /**
+	    * determines whether the queue is empty
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns the check for if the queue is empty
+	    *                   
+	    */
       public boolean hasNext()
       {
          return !q.empty();
       }
-      
+      /**
+	    * returns the next value determined by the iterator
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: returns a T type element and throws a 
+	    *       NoSuchElementException() if there is no next element
+	    *                   
+	    */
       public T next()
       {
          if(q.empty())
@@ -124,7 +213,13 @@ public class BST<T extends Comparable<? super T>>
             q.enqueue(x.right);
          return x.data;
       }
-      
+      /**
+	    * remove is unsupported by our implimentation
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: throws UnsupportedOperationException()
+	    *                   
+	    */
       public void remove()
       {
          throw new UnsupportedOperationException();
@@ -136,21 +231,42 @@ public class BST<T extends Comparable<? super T>>
     */
    public static class MyException extends RuntimeException
 	{
-	   
+	   /**
+	    * Constructor for MyException class
+	    * @param: none
+	    * @Pre-conditions: none
+	    * @Post-conditions: initilizes a MyException with no message
+	    *                   
+	    */
 	   public MyException()
 	   {
 	      super();
 	   }
+	   /**
+	    * constructor for MyException class with message
+	    * @param: message a message to output to the user
+	    * @Pre-conditions: message != null
+	    * @Post-conditions: initilizes a MyException with a message "message"
+	    */
 	   public MyException (String message)
 	   {
 	      super(message);
 	   }
 	}
-	
+	/**
+    * Constructor for BST class
+    * @param: none
+    * @Pre-conditions: none
+    * @Post-conditions: Initializes root to be null. Creates an empty BST 
+    *                   data structure
+    */
 	public BST()
-	{}
+	{
+	   root =null;
+	}
 	/**
 	 * Inserts item in the BST
+	 * @param: item A T type object to be insterted
 	 * @Pre-conditions: none
 	 * @Post-conditions: BST has one more element which is item
 	 */
@@ -160,6 +276,8 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Inserts item in the BS sub T
+	 * @param: Item A T type object to be inserted in the tree
+	 * @param: n    A BSTNode that serves as the "root" of the tree
 	 * @Pre-conditions: none
 	 * @Post-conditions: BS sub T has one more element which is item
 	 */
@@ -185,6 +303,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * removes item in the BST
+	 * @param: item  the object to remove from the tree
 	 * @Pre-conditions: none
 	 * @Post-conditions: BST will have one fewer T item
 	 */
@@ -194,6 +313,8 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * removes item in the BS sub T
+	 * @param: item the object to remove from the tree
+	 * @param: n BSTNode the root of the tree that we are working with
 	 * @Pre-conditions: item != null
 	 * @Post-conditions: BS sub T will have one fewer T item
 	 */
@@ -219,6 +340,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * removes node given in parameter
+	 * @param: n    Node to be deleted from the tree
 	 * @Pre-conditions: n != null
 	 * @Post-conditions: n will be deleted from tree
 	 */
@@ -249,6 +371,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds the successor value in the BST
+	 * @param: n   Node to find the successor of
 	 * @Pre-conditions: n != null
 	 * @Post-conditions: returns the next greates value in the BST
 	 */
@@ -263,6 +386,7 @@ public class BST<T extends Comparable<? super T>>
    }
 	/**
 	 * Finds and returns if the item is in the BST
+	 * @param: item  the object to find in the tree
 	 * @Pre-conditions: item != null
 	 * @Post-conditions: returns wether the item is found in the BST
 	 */
@@ -272,6 +396,8 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Compares the data of the node to the item  in the BST
+	 * @param: n     the root of the tree to find the object in
+	 * @param: item   the object to find in the tree
 	 * @Pre-conditions: item != null
 	 * @Post-conditions: returns wether the item is found in the BST
 	 */
@@ -287,12 +413,19 @@ public class BST<T extends Comparable<? super T>>
 	   else 
 	      return findX(n.right, item);
 	}
+	/**
+	 * Checks and returns if the tree is empty
+	 * @param: none
+	 * @Pre-conditions: none
+	 * @Post-conditions: returns the emptyness of the tree
+	 */
 	public boolean isEmpty()
 	{
 	   return root == null;
 	}
 	/**
 	 * Removes reference to the previous root node
+	 * @param: none
 	 * @Pre-conditions: none
 	 * @Post-conditions: root == null and BST is empty
 	 */
@@ -302,6 +435,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds the size of the BST
+	 * @param: none
 	 * @Pre-conditions: none
 	 * @Post-conditions: returns the size of the BST
 	 */
@@ -315,6 +449,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds the size of the BST
+	 * @param: n the root of the subtree to find the size of
 	 * @Pre-conditions: none
 	 * @Post-conditions: returns the size of the BS sub T
 	 */
@@ -333,6 +468,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds and returns the minimum object in the BST
+	 * @param: none
 	 * @Pre-conditions: none
 	 * @Post-conditions: throws myexception if item is not found
 	 * otherwise returns the minimum value
@@ -345,6 +481,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds and returns the minimum object in the BST
+	 * @param: n the root of the subtree to find the minimum of
 	 * @Pre-conditions: n != null
 	 * @Post-conditions: throws myexception if item is not found
 	 * otherwise returns the minimum value
@@ -362,6 +499,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds and returns the maximum object in the BST
+	 * @param: none
 	 * @Pre-conditions: none
 	 * @Post-conditions: throws myexception if tree is empty
 	 * otherwise returns the maximum value
@@ -374,6 +512,7 @@ public class BST<T extends Comparable<? super T>>
 	}
 	/**
 	 * Finds and returns the maximum object in the BST
+	 * @param: n the root of the subtree to find the maximum of
 	 * @Pre-conditions: n != null
 	 * @Post-conditions: throws myexception if item is not found
 	 * otherwise returns the maximum value
@@ -389,15 +528,63 @@ public class BST<T extends Comparable<? super T>>
 	      return findMaximum(n.right);
 	   }
 	}
-	public Iterator<T> iteratorPre(){return new PreIter(root);}
-	public Iterator<T> iteratorIn(){return new InIter(root);}
-	public Iterator<T> iteratorLevel(){return new LevelIter(root);}
+	/**
+	 * Returns a reference to an iterator that will traverse the BST in Pre-order
+	 * @param: n the root of the tree to iterate over
+	 * @Pre-conditions: none
+	 * @Post-conditions: creates and returns a new iterator for the end user to
+	 *                   be able to iterate over the tree
+	 * 
+	 */
+	public Iterator<T> iteratorPre()
+	{
+	   return new PreIter(root);
+	}
+	/**
+	 * Returns a reference to an iterator that will traverse the BST in In-order
+	 * @param: n the root of the tree to iterate over
+	 * @Pre-conditions: none
+	 * @Post-conditions: creates and returns a new iterator for the end user to
+	 *                   be able to iterate over the tree
+	 * 
+	 */
+	public Iterator<T> iteratorIn()
+	{
+	   return new InIter(root);
+   }
+	/**
+	 * Returns: reference to an iterator that will traverse the BST in Levelorder
+	 * @param: n the root of the tree to iterate over
+	 * @Pre-conditions: none
+	 * @Post-conditions: creates and returns a new iterator for the end user to
+	 *                   be able to iterate over the tree
+	 * 
+	 */
+	public Iterator<T> iteratorLevel()
+	{
+	   return new LevelIter(root);
+	}
+	/**
+	 * Prints the tree to the console level by level left to right
+	 * @param: none
+	 * @Pre-conditions: none
+	 * @Post-conditions: The tree is printed to the console in a "Directory" tree
+	 *                   style
+	 */
 	public void testPrint() 
 	{
 	   if(isEmpty())
 	      return;
 	   testPrintx(root, 0);
 	}
+	/**
+	 * Support method for Test print
+	 * @param: x The current Root of the tree that we are printing
+	 * @param: level the depth of the node within the BST
+	 * @Pre-conditions: none
+	 * @Post-conditions: Prints the current node to the console and calls 
+	 *                   print on the left and right subTrees
+	 */
 	private void testPrintx(BSTNode x, int level)
 	{
 	   for(int i=0; i<level; i++)
