@@ -1,6 +1,3 @@
-BST.old
-
-
 /*** Binary Search tree* Provides a generic implentation of a binary search tree* @version cpe 103 section 4** @author Mathew Duhon and Jason Dreisbach* @version Program 3*/
 import java.util.*;
 public class BST<T extends Comparable<? super T>>

@@ -1,8 +1,14 @@
+/*** Binary Search driver class* Provides user friendly way to access the BST and test function* @version cpe 103 section 4** @author Mathew Duhon and Jason Dreisbach* @version Program 3*/
 import java.util.*;
 public class BSTDriver
 {
+  /**
+   * @description Takes a choice from a printed menu does the appropriate method based upon entry
+   * Runs when executed from command line
+   */
    public static void main(String[] args)
    {
+      
       BST<Integer> q = new BST<Integer>();
       Iterator it;
       boolean repeat = true;
