@@ -1,4 +1,4 @@
-/** * ListPrinter class to test BinHeap class * Reads in the student data from a file and prints out a formatted list
+/** *  * Reads in the student data from a file and prints out a formatted list
  * * @version cpe 103 section 4 * * @author Mathew Duhon and Jason Dreisbach * @version Program 4 */
 import java.util.*;
 import java.io.*;
