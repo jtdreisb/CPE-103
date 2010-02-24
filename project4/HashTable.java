@@ -89,7 +89,12 @@ public class HashTable
    public Object find(Object item)
    {
       int index = findPosition(item);
-      return table[index] != null && table[index].isActive;
+      if( table[index] != null && table[index].isActive);
+      {
+         return item;
+      }
+      else
+         return null; 
    }
    
    
@@ -124,7 +129,6 @@ public class HashTable
       if(table[index] != null)
       {
          table[index].isActive = false;
-         count--;
       }
    }
    
