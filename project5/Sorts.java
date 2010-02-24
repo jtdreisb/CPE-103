@@ -7,10 +7,10 @@ public class Sorts <Type>
                   void selectionSort(Type[] arr, int size)
    {
       int minIndex = 0;
-      for( int i = 0; i < size -2 ; i++)
+      for( int i = 0; i < size -1 ; i++)
       {
          minIndex = i;
-         for( int j = i+1 ; j < size-1; j++)
+         for( int j = i+1 ; j < size; j++)
          {
             if( arr[j].compareTo(arr[minIndex]) < 0)
                minIndex = j;
@@ -27,7 +27,7 @@ public class Sorts <Type>
       while( !done )
       {
          done = true;
-         for( int i = 0; i < size-2; i++)
+         for( int i = 0; i < size-1; i++)
          {
             if( arr[i].compareTo(arr[i+1]) > 0)
             {
@@ -44,7 +44,7 @@ public class Sorts <Type>
    {
       Type temp;
       int j;
-      for( int i = 1; i < size-1; i++)
+      for( int i = 1; i < size; i++)
       {
          temp = arr[i];
          j = i;
@@ -58,7 +58,8 @@ public class Sorts <Type>
    }
    
    
-   private static void swap(Type[] arr, int a, int b)
+   private static <Type extends Comparable<? super Type>>
+                  void swap(Type[] arr, int a, int b)
    {
       Type temp = arr[a];
       arr[a] = arr[b];
@@ -73,13 +74,14 @@ public class Sorts <Type>
    }
    
    
-   private static void mergesort(Type[] arr, int first, int last)
+   private static <Type extends Comparable<? super Type>>
+                  void mergesort(Type[] arr, int first, int last)
    {
       int middle;
       if(first < last)
       {
          middle = (first + last)/2;
-         Sorts.mergesort(arr, first,middle);
+         Sorts.mergesort(arr, first ,middle);
          Sorts.mergesort(arr, middle+1 , last);
          Sorts.mergesortedhalves(arr, first, middle, last);
       }
@@ -94,23 +96,28 @@ public class Sorts <Type>
     * @Pre-conditions:  arr[first..middle] && arr[middle+1..last] are sorted
     * @Post-conditions: arr[first..last] is sorted
     */
-   private static void mergesortedhalves(Type[] arr, int first, 
+   private static <Type extends Comparable<? super Type>>
+                    void mergesortedhalves(Type[] arr, int first, 
                                           int middle, int last)
    {
-      Type[] tempArr = new Type[last-first+1];
+      Type[] tempArr = (Type []) new Comparable[last-first+1];
       int indexOne = first;
       int indexTwo = middle+1;
       int index = 0;
-      
-      while( indexOne <= middle && index <= last)
+
+      while( indexOne <= middle && indexTwo <= last)
       {
          if(arr[indexOne].compareTo(arr[indexTwo]) < 0 )
          {
-            tempArr[index] = arr[indexOne++];
+
+            tempArr[index] =  arr[indexOne];
+            indexOne++;
          }
          else
          {
-            tempArr[index] = arr[indexTwo++];
+
+            tempArr[index] = arr[indexTwo];
+            indexTwo++;
          }
          index++;
       }
@@ -122,11 +129,12 @@ public class Sorts <Type>
       {
          tempArr[index++] = arr[indexTwo++];
       }
-      index = 0;
-      for( int i = first; i < last+1; i++ )
+
+      for( int i = 0; i < tempArr.length; i++ )
       {
-         arr[i] = tempArr[index++];
+         arr[first + i] = tempArr[i];
       }
+
    }
    
    

@@ -4,6 +4,11 @@ public class TestDriver
 {
    public static void main(String[] args)
    {     
+      TestDriver.testCaseOne();
+   }
+   
+   public static void testCaseOne()
+   {
       Integer[] arr = new Integer[10];
       int index = 0;
       
@@ -18,19 +23,63 @@ public class TestDriver
       arr[index++] = 0;
       arr[index++] = -55;
       
-      System.out.println("Unsorted:");
+      System.out.print("Unsorted           :");
       for( int i = 0 ; i < index; i++)
       {
          System.out.print(" " + arr[i]);
       }  
-      
+      System.out.println();
       Sorts.selectionSort(arr,10);
-      
-      System.out.println("Sorted  :");
+
+      System.out.print("Sorted Selection   :");
       for( int i = 0 ; i < index; i++)
       {
          System.out.print(" " + arr[i]);
       }
+      System.out.println();
+      index = 0;
+      arr[index++] = 55;
+      arr[index++] = 23;
+      arr[index++] = 1;
+      arr[index++] = 66;
+      arr[index++] = 55;
+      arr[index++] = 11;
+      arr[index++] = 77;
+      arr[index++] = 9;
+      arr[index++] = 0;
+      arr[index++] = -55;
+      
+      Sorts.bubbleSort(arr,10);
+
+      System.out.print("Sorted Bubble      :");
+      for( int i = 0 ; i < index; i++)
+      {
+         System.out.print(" " + arr[i]);
+      }
+      System.out.println();
+
+      index = 0;
+      arr[index++] = 55;
+      arr[index++] = 23;
+      arr[index++] = 1;
+      arr[index++] = 66;
+      arr[index++] = 55;
+      arr[index++] = 11;
+      arr[index++] = 77;
+      arr[index++] = 9;
+      arr[index++] = 0;
+      arr[index++] = -55;
+
+      
+      Sorts.insertionSort(arr,10);
+
+      System.out.print("Sorted insertion   :");
+      for( int i = 0 ; i < index; i++)
+      {
+         System.out.print(" " + arr[i]);
+      }
+      System.out.println();
+      
       
       index = 0;
       arr[index++] = 55;
@@ -43,5 +92,16 @@ public class TestDriver
       arr[index++] = 9;
       arr[index++] = 0;
       arr[index++] = -55;
+
+      
+      Sorts.mergeSort(arr,10);
+
+      System.out.print("Sorted Merge       :");
+      for( int i = 0 ; i < index; i++)
+      {
+         System.out.print(" " + arr[i]);
+      }
+      System.out.println();
+      
    }
 }
