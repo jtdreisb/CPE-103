@@ -1,0 +1,39 @@
+java SortTimes
+Test 1: presorted list
+N=5000: T_ss=86, T_bs=0, T_is=0, T_ms=48, T_qs=7
+N=10000: T_ss=309, T_bs=0, T_is=13, T_ms=74, T_qs=28
+N=20000: T_ss=1213, T_bs=0, T_is=23, T_ms=6, T_qs=5
+N=40000: T_ss=4825, T_bs=0, T_is=0, T_ms=17, T_qs=15
+N=80000: T_ss=19415, T_bs=0, T_is=0, T_ms=23, T_qs=5
+
+Test 2: reverse sorted list
+N=5000: T_ss=77, T_bs=197, T_is=78, T_ms=1, T_qs=0
+N=10000: T_ss=308, T_bs=765, T_is=264, T_ms=2, T_qs=33
+N=20000: T_ss=1301, T_bs=3021, T_is=1053, T_ms=12, T_qs=22
+N=40000: T_ss=4960, T_bs=11966, T_is=4204, T_ms=10, T_qs=10
+N=80000: T_ss=19868, T_bs=47952, T_is=17008, T_ms=37, T_qs=28
+
+Test 3: random list
+N=5000: T_ss=60, T_bs=284, T_is=35, T_ms=1, T_qs=1
+N=5000: T_ss=51, T_bs=271, T_is=34, T_ms=1, T_qs=9
+N=5000: T_ss=69, T_bs=294, T_is=35, T_ms=1, T_qs=2
+
+N=10000: T_ss=212, T_bs=1181, T_is=159, T_ms=3, T_qs=36
+N=10000: T_ss=212, T_bs=1175, T_is=71, T_ms=3, T_qs=1
+N=10000: T_ss=211, T_bs=1180, T_is=72, T_ms=3, T_qs=1
+
+N=20000: T_ss=853, T_bs=4857, T_is=313, T_ms=7, T_qs=3
+N=20000: T_ss=853, T_bs=4844, T_is=300, T_ms=20, T_qs=3
+N=20000: T_ss=855, T_bs=4795, T_is=315, T_ms=7, T_qs=3
+
+N=40000: T_ss=3424, T_bs=19465, T_is=1224, T_ms=15, T_qs=8
+N=40000: T_ss=3426, T_bs=19478, T_is=1227, T_ms=15, T_qs=8
+N=40000: T_ss=3428, T_bs=19528, T_is=1229, T_ms=31, T_qs=7
+
+N=80000: T_ss=13891, T_bs=81010, T_is=5481, T_ms=33, T_qs=17
+N=80000: T_ss=13826, T_bs=80807, T_is=5259, T_ms=34, T_qs=17
+N=80000: T_ss=13867, T_bs=81150, T_is=5425, T_ms=37, T_qs=17
+
+
+a farwell message
+

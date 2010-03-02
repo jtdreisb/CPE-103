@@ -103,5 +103,53 @@ public class TestDriver
       }
       System.out.println();
       
+      System.out.println();
+      
+      
+      index = 0;
+      arr[index++] = 55;
+      arr[index++] = 23;
+      arr[index++] = 1;
+      arr[index++] = 66;
+      arr[index++] = 33;
+      arr[index++] = 11;
+      arr[index++] = 77;
+      arr[index++] = 9;
+      arr[index++] = 0;
+      arr[index++] = -55;
+
+      
+      Sorts.quickSort(arr,10);
+
+      System.out.print("Sorted Quick      :");
+      for( int i = 0 ; i < index; i++)
+      {
+         System.out.print(" " + arr[i]);
+      }
+      System.out.println();
+      
+      index = 0;
+      arr[index++] = 0;
+      arr[index++] = 1;
+      arr[index++] = 2;
+      arr[index++] = 3;
+      arr[index++] = 4;
+      arr[index++] = 5;
+      arr[index++] = 6;
+      arr[index++] = 7;
+      arr[index++] = 8;
+      arr[index++] = 9;
+
+      
+      Sorts.quickSort(arr,10);
+
+      System.out.print("Sorted Quick      :");
+      for( int i = 0 ; i < index; i++)
+      {
+         System.out.print(" " + arr[i]);
+      }
+      System.out.println();
+      
+      
    }
 }
