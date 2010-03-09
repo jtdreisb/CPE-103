@@ -96,12 +96,20 @@ public class DiGraphTest
                   break;
             case 't':
             case 'T':
-                  arr=q.topSort();
-                  for(int i=0; i<arr.length; i++)
+                  try
                   {
-                     System.out.print(arr[i]+" ");
+                     arr=q.topSort();
+                     for(int i=0; i<arr.length; i++)
+                     {
+                        System.out.print(arr[i]+" ");
+                     }
+                     System.out.println();
                   }
-                  System.out.println();
+                  catch (LQueue.MyException e)
+                  {
+                     System.out.println("Error: Cyclic graph cannot sort");
+                  }
+
                   break;
             case 'q':
             case 'Q':

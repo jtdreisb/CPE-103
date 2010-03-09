@@ -63,7 +63,7 @@ public class DiGraphAM
       {
          if(temp[i]==0)
             q.enqueue(new Integer (i));
-      } 
+      }
       while(!q.empty())
       {
          v=q.dequeue().intValue();
@@ -78,7 +78,8 @@ public class DiGraphAM
             }
          }
       }
-      if(count!= arr.length)
+      System.out.println(count +" <=> " + arr.length);
+      if(count != arr.length)
          throw new LQueue.MyException();
       return ans;      
    }
