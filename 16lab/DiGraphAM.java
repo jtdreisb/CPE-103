@@ -35,9 +35,9 @@ public class DiGraphAM
          for(int j=0; j<arr[i].length; j++)
          {
             if(arr[i][j]==1)
-               System.out.print(j +", ");
-         }  
-            System.out.println();
+               System.out.print(j +" ");
+         }
+         System.out.println();
       }
    }
    private int[] indegrees()
@@ -47,7 +47,7 @@ public class DiGraphAM
       {
          for ( int j=0; j<arr.length; j++)
          {
-            ret[i]+=arr[i][j];
+            ret[j]+=arr[i][j];
          }
       }
       return ret;
@@ -64,21 +64,21 @@ public class DiGraphAM
          if(temp[i]==0)
             q.enqueue(new Integer (i));
       }
+
       while(!q.empty())
       {
          v=q.dequeue().intValue();
          ans[count++]=v;
-         for(int i=0; i<arr.length; i++)
+         for(int i=0; i<arr[0].length; i++)
          {
-            if(arr[v][i] ==1)
+            if(arr[v][i] != 0)
             {
                temp[i]--;
                if(temp[i]==0)
-                  q.enqueue(new Integer (i));             
+                  q.enqueue(new Integer(i));             
             }
          }
       }
-      System.out.println(count +" <=> " + arr.length);
       if(count != arr.length)
          throw new LQueue.MyException();
       return ans;      
